@@ -3,8 +3,8 @@
 
 #include <iostream>
 
-void framebuffer_size_callback(GLFWwindow* window, int width, int height);
-void processInput(GLFWwindow *window);
+void OnFramebufferResized(GLFWwindow* window, int width, int height);
+void ProcessInput(GLFWwindow *window);
 
 const char* vertexShaderSource = "#version 330 core\n"
 "layout (location = 0) in vec3 aPos;\n"
@@ -41,7 +41,7 @@ int main()
         return -1;
     }
     glfwMakeContextCurrent(window);
-    glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+    glfwSetFramebufferSizeCallback(window, OnFramebufferResized);
 
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
     {
@@ -118,7 +118,7 @@ int main()
 
     while (!glfwWindowShouldClose(window))
     {
-        processInput(window);
+        ProcessInput(window);
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
         glUseProgram(shaderProgram);
@@ -135,13 +135,13 @@ int main()
     return 0;
 }
 
-void processInput(GLFWwindow* window)
+void ProcessInput(GLFWwindow* window)
 {
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
 }
 
-void framebuffer_size_callback(GLFWwindow* window, int width, int height)
+void OnFramebufferResized(GLFWwindow* window, int width, int height)
 {
     glViewport(0, 0, width, height);
 }

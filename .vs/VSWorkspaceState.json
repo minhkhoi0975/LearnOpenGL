@@ -1,0 +1,18 @@
+{
+  "OutputFoldersPerTargetSystem": {
+    "Local Machine": [
+      "out\\build\\x64-Debug",
+      "out\\install\\x64-Debug"
+    ]
+  },
+  "ExpandedNodes": [
+    "",
+    "\\includes",
+    "\\includes\\learnopengl",
+    "\\src",
+    "\\src\\1.getting_started",
+    "\\src\\1.getting_started\\6.1.coordinate_systems"
+  ],
+  "SelectedNode": "\\src\\1.getting_started\\6.1.coordinate_systems\\coordinate_systems.cpp",
+  "PreviewInSolutionExplorer": false
+}

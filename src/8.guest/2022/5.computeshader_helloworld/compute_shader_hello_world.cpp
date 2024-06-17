@@ -12,12 +12,12 @@
 
 #include <iostream>
 
-void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+void OnFramebufferResized(GLFWwindow* window, int width, int height);
 void renderQuad();
 
 // settings
-const unsigned int SCR_WIDTH = 800;
-const unsigned int SCR_HEIGHT = 600;
+const unsigned int SCREEN_WIDTH = 800;
+const unsigned int SCREEN_HEIGHT = 600;
 
 // texture size
 const unsigned int TEXTURE_WIDTH = 1000, TEXTURE_HEIGHT = 1000;
@@ -41,7 +41,7 @@ int main(int argc, char* argv[])
 
 	// glfw window creation
 	// --------------------
-	GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "LearnOpenGL", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "LearnOpenGL", NULL, NULL);
 	if (window == NULL)
 	{
 		std::cout << "Failed to create GLFW window" << std::endl;
@@ -49,7 +49,7 @@ int main(int argc, char* argv[])
 		return -1;
 	}
 	glfwMakeContextCurrent(window);
-	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+	glfwSetFramebufferSizeCallback(window, OnFramebufferResized);
 	glfwSwapInterval(0);
 
 	// glad: load all OpenGL function pointers
@@ -147,7 +147,7 @@ int main(int argc, char* argv[])
 	// optional: de-allocate all resources once they've outlived their purpose:
 	// ------------------------------------------------------------------------
 	glDeleteTextures(1, &texture);
-	glDeleteProgram(screenQuad.ID);
+	glDeleteProgram(screenQuad.id);
 	glDeleteProgram(computeShader.ID);
 
 	glfwTerminate();
@@ -188,7 +188,7 @@ void renderQuad()
 
 // glfw: whenever the window size changed (by OS or user resize) this callback function executes
 // ---------------------------------------------------------------------------------------------
-void framebuffer_size_callback(GLFWwindow* window, int width, int height)
+void OnFramebufferResized(GLFWwindow* window, int width, int height)
 {
 	// make sure the viewport matches the new window dimensions; note that width and 
 	// height will be significantly larger than specified on retina displays.
