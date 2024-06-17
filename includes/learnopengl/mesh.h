@@ -38,7 +38,6 @@ public:
 	std::vector<Vertex>       vertices;
 	std::vector<unsigned int> indices;
 	std::vector<Texture>      textures;
-	unsigned int vertexArray;
 
 	// constructor
 	Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices, std::vector<Texture> textures)
@@ -47,7 +46,6 @@ public:
 		this->indices = indices;
 		this->textures = textures;
 
-		// now that we have all the required data, set the vertex buffers and its attribute pointers.
 		setupMesh();
 	}
 
@@ -90,8 +88,9 @@ public:
 	}
 
 private:
-	// render data 
-	unsigned int vertexBuffer, elementBuffer;
+	unsigned int vertexArray;
+	unsigned int vertexBuffer;
+	unsigned int elementBuffer;
 
 	// initializes all the buffer objects/arrays
 	void setupMesh()
